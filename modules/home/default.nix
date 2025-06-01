@@ -12,8 +12,6 @@
     ./gnome.nix # gnome apps
     ./gtk.nix # gtk theme
     ./hyprland # window manager
-    ./kitty.nix # terminal
-    ./nvim.nix # neovim editor
     ./packages.nix # other packages
     ./rofi/default.nix # launcher
     ./scripts/scripts.nix # personal scripts
@@ -30,6 +28,8 @@
     ./zoxide.nix
     ./nemo.nix
 
+    ./kitty.nix
     ./spotify.nix
+    ./neovim/default.nix
   ];
 }

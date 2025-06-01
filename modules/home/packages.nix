@@ -28,11 +28,7 @@
       xdg-utils
       mpv
       file
-      rustup
-      gcc
-      openssl
       netcat
-      pkg-config
 
       ## GUI Apps
       gimp

@@ -34,6 +34,8 @@
       shell_integration = "enabled";
     };
 
+    extraConfig = "include current-theme.conf";
+
     keybindings = {
       ## Tabs
       "alt+1" = "goto_tab 1";
