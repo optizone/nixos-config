@@ -23,6 +23,7 @@
           mappings = {
             "l" = "open";
             "h" = "close_node";
+            "p" = "toggle_preview";
             "<space>" = "none";
           };
         };

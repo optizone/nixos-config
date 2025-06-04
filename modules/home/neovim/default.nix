@@ -1,5 +1,8 @@
 { ... }:
 {
+
+  home.sessionVariables.EDITOR = "nvim";
+
   imports = [
     ./lualine.nix
     ./neo-tree.nix
@@ -59,6 +62,18 @@
         rust = {
           enable = true;
           crates.enable = true;
+          lsp.opts = ''
+            ['rust-analyzer'] = {
+              cargo = { allFeature = true },
+              checkOnSave = true,
+              procMacro = {
+                enable = true,
+              },
+              diagnostics = {
+                enable = true,
+              },
+            },
+          '';
         };
 
         assembly.enable = false;
@@ -85,11 +100,11 @@
       visuals = {
         nvim-scrollbar.enable = true;
         nvim-web-devicons.enable = true;
-        nvim-cursorline.enable = true;
-        cinnamon-nvim.enable = true;
-        fidget-nvim.enable = true;
+        nvim-cursorline.enable = false;
+        cinnamon-nvim.enable = false;
+        fidget-nvim.enable = false;
 
-        rainbow-delimiters.enable = true;
+        rainbow-delimiters.enable = false;
 
         highlight-undo.enable = true;
         indent-blankline.enable = true;
@@ -116,6 +131,33 @@
       snippets.luasnip.enable = true;
 
       keymaps = [
+        # TODO: else vim.lsp.buf.codeAction()
+        {
+          key = "<leader>ca";
+          mode = [
+            "n"
+            "v"
+          ];
+          action = "<Cmd>RustLsp codeAction<CR>";
+          silent = true;
+          desc = "Code Action for Rust LSP";
+        }
+
+        {
+          key = "K";
+          mode = [ "n" ];
+          action = "<Cmd>RustLsp hover actions<CR>";
+          silent = true;
+          desc = "rustaceanvim hover actions";
+        }
+        {
+          key = "<esc>";
+          mode = [ "n" ];
+          action = "<Cmd>noh<CR>";
+          silent = true;
+          desc = "Disable search higlights";
+        }
+        # TODO: toggle
         {
           key = "<c-t>";
           mode = [ "t" ];
@@ -125,9 +167,27 @@
           desc = "Quit toggleterm";
         }
         {
-          key = "<leader>e";
+          key = "<c-s>";
+          action = "<esc><Cmd>w<CR>";
+          mode = [
+            "n"
+            "i"
+          ];
+          noremap = true;
+          silent = true;
+          desc = "Save file";
+        }
+        {
+          key = "<leader>E";
           mode = [ "n" ];
           action = "<Cmd>Neotree toggle<CR>";
+          silent = true;
+          desc = "Toggle neotree";
+        }
+        {
+          key = "<leader>e";
+          mode = [ "n" ];
+          action = "<Cmd>Neotree focus<CR>";
           silent = true;
           desc = "Toggle neotree";
         }
@@ -137,6 +197,57 @@
           action = "<Cmd>qa<CR>";
           silent = true;
           desc = "Quit All";
+        }
+
+        # -- Goto diagnostics
+        {
+          key = "]e";
+          mode = [ "n" ];
+          action = "function() vim.diagnostic.goto_next({severity = \"ERROR\"}) end";
+          desc = "Goto next error";
+          lua = true;
+        }
+        {
+          key = "[e";
+          mode = [ "n" ];
+          action = "function() vim.diagnostic.goto_prev({severity = \"ERROR\"}) end";
+          desc = "Goto previous error";
+          lua = true;
+        }
+        {
+          key = "]w";
+          mode = [ "n" ];
+          action = "function() vim.diagnostic.goto_next({severity = \"WARN\"}) end";
+          desc = "Goto next warning";
+          lua = true;
+        }
+        {
+          key = "[w";
+          mode = [ "n" ];
+          action = "function() vim.diagnostic.goto_prev({severity = \"WARN\"}) end";
+          desc = "Goto previous warning";
+          lua = true;
+        }
+        {
+          key = "]d";
+          mode = [ "n" ];
+          action = "function() vim.diagnostic.goto_next({severity = nil}) end";
+          desc = "Goto next diagnostic";
+          lua = true;
+        }
+        {
+          key = "[d";
+          mode = [ "n" ];
+          action = "function() vim.diagnostic.goto_prev({severity = nil}) end";
+          desc = "Goto previous diagnostics";
+          lua = true;
+        }
+        {
+          key = "<leader>cd";
+          mode = [ "n" ];
+          action = "vim.diagnostic.open_float";
+          desc = "Line diagnostics";
+          lua = true;
         }
 
         # -- Top Pickers
@@ -239,11 +350,19 @@
       ];
 
       diagnostics = {
+        enable = true;
         nvim-lint.enable = true;
+        config.virtual_lines = true;
+        config.virtual_text = true;
       };
 
       tabline = {
-        nvimBufferline.enable = true;
+        nvimBufferline = {
+          enable = true;
+          mappings = {
+            closeCurrent = "<leader>bd";
+          };
+        };
       };
 
       treesitter.context.enable = true;
@@ -275,7 +394,11 @@
       };
 
       notify = {
-        nvim-notify.enable = true;
+        nvim-notify = {
+          enable = true;
+          # FIXME: hack for transparent gruvbox theme
+          setupOpts.background_colour = "#282828";
+        };
       };
 
       projects = {
@@ -308,92 +431,6 @@
           enable = true;
           setupOpts = {
             picker.enable = true;
-            keys = [
-              # -- Top Pickers
-              {
-                key = "<leader>ff";
-                mode = [ "n" ];
-                action = "function() Snacks.picker.smart() end";
-                desc = "Smart Find Files";
-              }
-              {
-                key = "<space><space>";
-                mode = [ "n" ];
-                action = "function() Snacks.picker.grep() end";
-                desc = "Grep";
-              }
-              {
-                key = "<leader>:";
-                mode = [ "n" ];
-                action = "function() Snacks.picker.command_history() end";
-                desc = "Command History";
-              }
-              {
-                key = "<leader>,";
-                mode = [ "n" ];
-                action = "function() Snacks.picker.buffers() end";
-                desc = "Buffers";
-              }
-              {
-                key = "<leader>n";
-                mode = [ "n" ];
-                action = "function() Snacks.picker.notifications() end";
-                desc = "Notification History";
-              }
-
-              # -- LSP
-              {
-                key = "gd";
-                mode = [ "n" ];
-                action = "function() Snacks.picker.lsp_definitions() end";
-                desc = "Goto Definition";
-              }
-              {
-                key = "gD";
-                mode = [ "n" ];
-                action = "function() Snacks.picker.lsp_declarations() end";
-                desc = "Goto Declaration";
-              }
-              {
-                key = "gr";
-                mode = [ "n" ];
-                action = "function() Snacks.picker.lsp_references() end";
-                desc = "References";
-                nowait = true;
-              }
-              {
-                key = "gi";
-                mode = [ "n" ];
-                action = "function() Snacks.picker.lsp_implementations() end";
-                desc = "Goto Implementation";
-              }
-              {
-                key = "gy";
-                mode = [ "n" ];
-                action = "function() Snacks.picker.lsp_type_definitions() end";
-                desc = "Goto T[y]pe Definition";
-              }
-              {
-                key = "<leader>ss";
-                mode = [ "n" ];
-                action = "function() Snacks.picker.lsp_symbols() end";
-                desc = "LSP Symbols";
-              }
-              {
-                key = "<leader>sS";
-                mode = [ "n" ];
-                action = "function() Snacks.picker.lsp_workspace_symbols() end";
-                desc = "LSP Workspace Symbols";
-              }
-
-              # -- Other
-              {
-                key = "<leader>bd";
-                mode = [ "n" ];
-                action = "function() Snacks.bufdelete() end";
-                desc = "Delete buffer";
-              }
-            ];
           };
         };
       };
@@ -428,11 +465,25 @@
         };
       };
 
+      navigation = {
+        harpoon = {
+          enable = true;
+        };
+      };
+
       ui = {
         borders.enable = true;
         noice.enable = true;
         colorizer.enable = true;
-        modes-nvim.enable = true;
+        modes-nvim = {
+          enable = false;
+          setupOpts.colors = {
+            copy = "#D79921"; # or #FABD2F
+            delete = "#CC241D"; # #FB4934
+            insert = "#B16286"; # D3869B
+            visual = "#458588"; # 83A598
+          };
+        };
         illuminate.enable = true;
         breadcrumbs = {
           enable = true;
@@ -448,9 +499,10 @@
               "90"
               "130"
             ];
+            rust = "120";
           };
         };
-        fastaction.enable = true;
+        fastaction.enable = false;
         nvim-ufo.enable = false;
       };
 

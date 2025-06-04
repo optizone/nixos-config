@@ -1,9 +1,14 @@
 { pkgs, config, ... }:
+let
+  goodix-gt7868q = config.boot.kernelPackages.callPackage ./goodix-gt7868q.nix { };
+in
 {
   imports = [
     ./hardware-configuration.nix
     ./../../modules/core
   ];
+
+  services.logind.lidSwitch = "ignore";
 
   environment.systemPackages = with pkgs; [
     acpi
@@ -13,16 +18,7 @@
   ];
 
   services = {
-    power-profiles-daemon.enable = true;
-
-    upower = {
-      enable = true;
-      percentageLow = 20;
-      percentageCritical = 5;
-      percentageAction = 3;
-      criticalPowerAction = "PowerOff";
-    };
-
+    tlp.enable = true;
     tlp.settings = {
       CPU_ENERGY_PERF_POLICY_ON_AC = "power";
       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
@@ -38,6 +34,13 @@
 
       INTEL_GPU_MIN_FREQ_ON_AC = 500;
       INTEL_GPU_MIN_FREQ_ON_BAT = 500;
+
+      START_CHARGE_THRESH_BAT0 = 75;
+      STOP_CHARGE_THRESH_BAT0 = 80;
+
+      START_CHARGE_THRESH_BAT1 = 75;
+      STOP_CHARGE_THRESH_BAT1 = 80;
+
       # INTEL_GPU_MAX_FREQ_ON_AC=0;
       # INTEL_GPU_MAX_FREQ_ON_BAT=0;
       # INTEL_GPU_BOOST_FREQ_ON_AC=0;
@@ -50,14 +53,33 @@
 
   powerManagement.cpuFreqGovernor = "performance";
 
+  environment.etc."libinput/local-overrides.quirks".text = pkgs.lib.mkForce ''
+    [Lenovo Thinkbook G6+ IMH - Goodix GT7868Q]
+    MatchDMIModalias=dmi:bvnLENOVO:*:pvrThinkBook*G6+IMH*:*
+    MatchVendor=0x27C6
+    MatchProduct=0x01E9
+
+    #AttrEventCode=-ABS_MT_PRESSURE;-ABS_PRESSURE;
+    AttrPressureRange=2:0
+    AttrPalmPressureThreshold=600
+    AttrThumbPressureThreshold=1000
+  '';
+
   boot = {
-    kernelModules = [ "acpi_call" ];
+    kernelModules = [
+      "acpi_call"
+      "thinkpad_acpi"
+      "goodix-gt7868q"
+    ];
     extraModulePackages =
       with config.boot.kernelPackages;
       [
         acpi_call
         cpupower
       ]
-      ++ [ pkgs.cpupower-gui ];
+      ++ [
+        pkgs.cpupower-gui
+        goodix-gt7868q
+      ];
   };
 }

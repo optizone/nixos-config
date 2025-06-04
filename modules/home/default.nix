@@ -31,5 +31,6 @@
     ./kitty.nix
     ./spotify.nix
     ./neovim/default.nix
+    ./kanshi.nix
   ];
 }

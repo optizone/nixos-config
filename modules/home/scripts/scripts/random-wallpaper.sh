@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
-wallpaper_path="$HOME/Pictures/wallpapers"
-wallpapers_folder="$HOME/Pictures/wallpapers/others"
+wallpapers_folder="$HOME/Pictures/wallpapers"
 
-current_wallpaper=$(readlink "$wallpaper_path/wallpaper" 2> /dev/null)
+current_wallpaper=$(readlink "$wallpapers_folder/.current_wallpaper" 2> /dev/null)
 current_wallpaper_name="$(basename "$current_wallpaper")"
 
-wallpaper_list=($(ls "$wallpapers_folder"))
+wallpaper_list=${($(ls "$wallpapers_folder"))[@]/".current_wallpaper"}
 wallpaper_count=${#wallpaper_list[@]}
 
 while true; do
