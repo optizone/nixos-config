@@ -38,6 +38,7 @@
       wineWowPackages.wayland
       oculante
       telegram-desktop
+      google-chrome
 
       # todo: package
       thunderbird

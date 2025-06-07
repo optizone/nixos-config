@@ -8,6 +8,10 @@ in
     ./../../modules/core
   ];
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+
   services.logind.lidSwitch = "ignore";
 
   environment.systemPackages = with pkgs; [
@@ -35,8 +39,7 @@ in
       INTEL_GPU_MIN_FREQ_ON_AC = 500;
       INTEL_GPU_MIN_FREQ_ON_BAT = 500;
 
-      START_CHARGE_THRESH_BAT0 = 75;
-      STOP_CHARGE_THRESH_BAT0 = 80;
+      STOP_CHARGE_THRESH_BAT0 = 1;
 
       START_CHARGE_THRESH_BAT1 = 75;
       STOP_CHARGE_THRESH_BAT1 = 80;

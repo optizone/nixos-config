@@ -1,7 +1,8 @@
 { ... }:
 {
-
-  home.sessionVariables.EDITOR = "nvim";
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
 
   imports = [
     ./lualine.nix
@@ -126,6 +127,11 @@
         blink-cmp = {
           enable = true;
         };
+      };
+
+      clipboard = {
+        enable = true;
+        providers.wl-copy.enable = true;
       };
 
       snippets.luasnip.enable = true;
