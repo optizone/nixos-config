@@ -146,7 +146,7 @@
         "$mainMod SHIFT, SPACE, fullscreen, 1"
         "$mainMod, F, exec, toggle-float"
         "$mainMod SHIFT, D, exec, rofi -show drun || pkill rofi"
-        "$mainMod SHIFT, Return, exec, $term yazi"
+        "$mainMod SHIFT, Return, exec, $term fish -c yazi"
         "$mainMod, Escape, exec, swaylock"
         "ALT, Escape, exec, hyprlock"
         "$mainMod, X, exec, power-menu"

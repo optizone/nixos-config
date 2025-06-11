@@ -132,6 +132,7 @@
       clipboard = {
         enable = true;
         providers.wl-copy.enable = true;
+        registers = "unnamedplus";
       };
 
       snippets.luasnip.enable = true;
@@ -147,6 +148,25 @@
           action = "<Cmd>RustLsp codeAction<CR>";
           silent = true;
           desc = "Code Action for Rust LSP";
+        }
+        {
+          key = "<leader>cd";
+          mode = [
+            "n"
+            "v"
+          ];
+          action = "<Cmd>RustLsp renderDiagnostic current<CR>";
+          silent = true;
+          desc = "Render diagnostic";
+        }
+        {
+          key = "<leader>cr";
+          mode = [
+            "n"
+          ];
+          action = "vim.lsp.buf.rename";
+          lua = true;
+          desc = "Rename";
         }
 
         {
@@ -358,7 +378,7 @@
       diagnostics = {
         enable = true;
         nvim-lint.enable = true;
-        config.virtual_lines = true;
+        config.virtual_lines = false;
         config.virtual_text = true;
       };
 
