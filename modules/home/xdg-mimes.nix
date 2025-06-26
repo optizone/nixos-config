@@ -2,8 +2,7 @@
 with lib;
 let
   defaultApps = {
-    # TODO: choose apps
-    browser = [ "firefox.desktop" ];
+    browser = [ "zen.desktop" ];
     text = [ "org.gnome.TextEditor.desktop" ];
     image = [ "oculante.desktop" ];
     audio = [ "mpv.desktop" ];

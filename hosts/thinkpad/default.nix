@@ -1,6 +1,8 @@
 { pkgs, config, ... }:
 let
-  goodix-gt7868q = config.boot.kernelPackages.callPackage ./goodix-gt7868q.nix { };
+  goodix-gt7868q =
+    config.boot.kernelPackages.callPackage ./goodix-gt7868q.nix
+      { };
 in
 {
   imports = [

@@ -1,4 +1,4 @@
-{ ... }:
+{ fontMono, ... }:
 {
   programs.kitty = {
     enable = true;
@@ -7,7 +7,7 @@
     themeFile = "gruvbox-dark-hard";
 
     font = {
-      name = "JetBrainsMono Nerd Font Mono";
+      name = "${fontMono}";
       size = 11;
     };
 

@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ ... }:
 {
   imports = [
     ./bat.nix # better cat command
@@ -24,10 +24,10 @@
     ./waypaper.nix # GUI wallpaper picker
     ./xdg-mimes.nix # xdg config
     ./yazi/default.nix # terminal file manager
-    ./vscodium/default.nix
     ./zoxide.nix
     ./nemo.nix
 
+    ./zen-browser.nix
     ./kitty.nix
     ./spotify.nix
     ./neovim/default.nix

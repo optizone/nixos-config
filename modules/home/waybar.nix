@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, font, ... }:
 let
   colors = rec {
     c_black = "#282828";
@@ -43,8 +43,6 @@ in
     pkgs.wttrbar
     pkgs.jq
   ];
-
-  # TODO: add wttrbar
 
   # config
   programs.waybar.settings.mainBar = {
@@ -142,6 +140,8 @@ in
       format = " {}";
       format-ru = "RU";
       format-en = "US";
+      # keyboard-name = "at-translated-set-2-keyboard";
+      on-click = "hyprctl switchxkblayout at-translated-set-2-keyboard next";
     };
 
     memory = {
@@ -291,7 +291,7 @@ in
       min-height: 0;
       margin: 0;
       padding: 0;
-      font-family: "JetBrainsMono Nerd Font";
+      font-family: "${font}";
       font-size: 10pt;
     }
 

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, font, ... }:
 {
   programs.swaylock = {
     enable = true;
@@ -8,8 +8,8 @@
     settings = {
       clock = true;
       daemonize = true;
-      # timestr="%H:%M";
       datestr = "";
+      timestr = "%H:%M";
       screenshots = true;
       ignore-empty-password = true;
 
@@ -21,7 +21,7 @@
       effect-vignette = "0.75:0.75";
       effect-pixelate = 5;
 
-      font = "JetBrainsMono Nerd Font";
+      font = "${font}";
 
       text-wrong-color = "FBF1C7FF";
       text-ver-color = "FBF1C7FF";

@@ -49,6 +49,11 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -61,6 +66,10 @@
     let
       username = "optizone";
       system = "x86_64-linux";
+      font = "JetBrainsMono Nerd Font";
+      fontMono = "${font} Mono";
+      shell = "fish";
+
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -69,28 +78,25 @@
     in
     {
       nixosConfigurations = {
-        desktop = nixpkgs.lib.nixosSystem {
+        thinkpad = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/desktop
+            ./hosts/thinkpad
             nix-index-database.nixosModules.nix-index
           ];
           specialArgs = {
-            host = "desktop";
-            inherit self inputs username;
+            host = "thinkpad";
+            inherit
+              self
+              inputs
+              username
+              font
+              fontMono
+              shell
+              ;
           };
         };
-        laptop = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./hosts/laptop
-            nix-index-database.nixosModules.nix-index
-          ];
-          specialArgs = {
-            host = "laptop";
-            inherit self inputs username;
-          };
-        };
+
         vm = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
@@ -99,7 +105,14 @@
           ];
           specialArgs = {
             host = "vm";
-            inherit self inputs username;
+            inherit
+              self
+              inputs
+              username
+              font
+              fontMono
+              shell
+              ;
           };
         };
       };

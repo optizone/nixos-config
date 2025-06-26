@@ -45,7 +45,18 @@
         enableTreesitter = true;
         enableExtraDiagnostics = true;
 
-        nix.enable = true;
+        nix = {
+          enable = true;
+          format = {
+            enable = true;
+            type = "nixfmt";
+          };
+          lsp = {
+            enable = true;
+            server = "nixd";
+          };
+          treesitter.enable = true;
+        };
         markdown.enable = true;
 
         bash.enable = true;
@@ -161,9 +172,7 @@
         }
         {
           key = "<leader>cr";
-          mode = [
-            "n"
-          ];
+          mode = [ "n" ];
           action = "vim.lsp.buf.rename";
           lua = true;
           desc = "Rename";
