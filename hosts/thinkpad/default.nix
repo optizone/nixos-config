@@ -6,7 +6,7 @@ in
   imports = [
     ../laptop-common/default.nix
     ./hardware-configuration.nix
-    ./../../modules/core
+    ./user.nix
   ];
 
   environment.etc."libinput/local-overrides.quirks".text = pkgs.lib.mkForce ''

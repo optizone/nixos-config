@@ -69,6 +69,9 @@
       fontMono = "${font} Mono";
       shell = pkgs.fish;
 
+      gitUsername = "optizone";
+      gitEmail = "ilya.kek.lol.orbidol@gmail.com";
+
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -92,6 +95,8 @@
               font
               fontMono
               shell
+              gitUsername
+              gitEmail
               ;
           };
         };
@@ -105,6 +110,8 @@
           specialArgs = {
             host = "thinkpad";
             username = "boicov";
+            gitUsername = "boicov";
+            gitEmail = "boicov@protei-lab.ru";
             inherit
               self
               inputs
@@ -130,6 +137,8 @@
               font
               fontMono
               shell
+              gitUsername
+              gitEmail
               ;
           };
         };

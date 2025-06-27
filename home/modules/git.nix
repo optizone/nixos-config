@@ -1,10 +1,15 @@
-{ username, ... }:
+{
+  username,
+  gitUsername,
+  gitEmail,
+  ...
+}:
 {
   programs.git = {
     enable = true;
 
-    userName = "optizone";
-    userEmail = "ilya.kek.lol.orbidol@gmail.com";
+    userName = "${gitUsername}";
+    userEmail = "${gitEmail}";
 
     extraConfig = {
       init.defaultBranch = "main";
@@ -17,9 +22,7 @@
           "gh:"
           "https://github.com/"
         ];
-        "git@github.com:optizone/".insteadOf = "op:";
       };
-      # TODO: xdg
       core.excludesFile = "/home/${username}/.config/git/.gitignore";
     };
 

@@ -1,0 +1,35 @@
+{ ... }:
+{
+  imports = [
+    ./bat.nix
+    ./firefox.nix
+    ./btop.nix
+    ./eza/default.nix
+    ./fastfetch/default.nix
+    ./fish.nix
+    ./fzf.nix
+    ./git.nix
+    ./gnome.nix
+    ./gtk.nix
+    ./hyprland
+    ./packages.nix
+    ./rofi/default.nix
+    ./scripts/scripts.nix
+    ./ssh.nix
+    ./starship.nix
+    ./swaylock.nix
+    ./swayosd.nix
+    ./swaync/swaync.nix
+    ./waybar.nix
+    ./waypaper.nix
+    ./xdg-mimes.nix
+    ./yazi/default.nix
+    ./zoxide.nix
+    ./nemo.nix
+    ./zen-browser.nix
+    ./kitty.nix
+    ./spotify.nix
+    ./neovim/default.nix
+    ./kanshi.nix
+  ];
+}

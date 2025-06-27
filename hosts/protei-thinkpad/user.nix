@@ -16,7 +16,7 @@
     users.${username} = {
       imports = [
         inputs.nvf.homeManagerModules.default
-        ./../home
+        ../../home/modules
       ];
       home.username = "${username}";
       home.homeDirectory = "/home/${username}";

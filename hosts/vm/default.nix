@@ -2,7 +2,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./../../modules/core
+    ../core
+    ./user.nix
   ];
 
   # kvm/qemu doesn't use UEFI firmware mode by default.
