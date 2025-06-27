@@ -64,11 +64,10 @@
       ...
     }@inputs:
     let
-      username = "optizone";
       system = "x86_64-linux";
       font = "JetBrainsMono Nerd Font";
       fontMono = "${font} Mono";
-      shell = "fish";
+      shell = pkgs.fish;
 
       pkgs = import nixpkgs {
         inherit system;
@@ -86,10 +85,29 @@
           ];
           specialArgs = {
             host = "thinkpad";
+            username = "optizone";
             inherit
               self
               inputs
-              username
+              font
+              fontMono
+              shell
+              ;
+          };
+        };
+
+        protei-thinkpad = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/protei-thinkpad
+            nix-index-database.nixosModules.nix-index
+          ];
+          specialArgs = {
+            host = "thinkpad";
+            username = "boicov";
+            inherit
+              self
+              inputs
               font
               fontMono
               shell
@@ -105,10 +123,10 @@
           ];
           specialArgs = {
             host = "vm";
+            username = "optizone";
             inherit
               self
               inputs
-              username
               font
               fontMono
               shell

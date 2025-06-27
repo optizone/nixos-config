@@ -1,8 +1,8 @@
 {
-  pkgs,
   inputs,
   username,
   specialArgs,
+  shell,
   ...
 }:
 {
@@ -32,9 +32,9 @@
       "networkmanager"
       "wheel"
     ];
-    shell = pkgs.fish;
+    ignoreShellProgramCheck = true;
+    inherit shell;
   };
-  # TODO: refactor
-  programs.fish.enable = true;
+
   nix.settings.allowed-users = [ "${username}" ];
 }
