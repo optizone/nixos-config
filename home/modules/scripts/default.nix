@@ -20,5 +20,5 @@ let
   scripts = builtins.attrValues scriptsSet;
 in
 {
-  home.packages = scripts;
+  home.packages = scripts ++ [ pkgs.swappy ];
 }

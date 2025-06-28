@@ -1,5 +1,7 @@
 { ... }:
 {
+  imports = [ ./fd.nix ];
+
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;

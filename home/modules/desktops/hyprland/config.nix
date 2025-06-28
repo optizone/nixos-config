@@ -1,5 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    playerctl
+    wl-clipboard
+  ];
+
   wayland.windowManager.hyprland = {
     settings = {
       # autostart

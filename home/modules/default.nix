@@ -1,35 +1,34 @@
 { ... }:
 {
   imports = [
-    ./bat.nix
-    ./firefox.nix
-    ./btop.nix
-    ./eza/default.nix
-    ./fastfetch/default.nix
-    ./fish.nix
-    ./fzf.nix
+    ./browsers/firefox.nix
+    ./browsers/zen-browser.nix
+    ./browsers/google-chrome.nix
+
+    ./desktops/default.nix
+
+    ./gui-apps/obsidian.nix
+    ./gui-apps/file-managers/nemo.nix
+    ./gui-apps/images/gimp.nix
+    ./gui-apps/images/inkscape.nix
+    ./gui-apps/images/oculante.nix
+    ./gui-apps/multimedia/mpv.nix
+    ./gui-apps/multimedia/spotify.nix
+    ./gui-apps/office/libreoffice.nix
+    ./gui-apps/social/telegram.nix
+
+    ./scripts
+
+    ./shells/fish.nix
+
+    ./terminal/apps
+    ./terminal/emulators/kitty.nix
+
     ./git.nix
-    ./gnome.nix
-    ./gtk.nix
-    ./hyprland
+    ./kanshi.nix
     ./packages.nix
-    ./rofi/default.nix
-    ./scripts/scripts.nix
     ./ssh.nix
-    ./starship.nix
-    ./swaylock.nix
-    ./swayosd.nix
-    ./swaync/swaync.nix
-    ./waybar.nix
     ./waypaper.nix
     ./xdg-mimes.nix
-    ./yazi/default.nix
-    ./zoxide.nix
-    ./nemo.nix
-    ./zen-browser.nix
-    ./kitty.nix
-    ./spotify.nix
-    ./neovim/default.nix
-    ./kanshi.nix
   ];
 }

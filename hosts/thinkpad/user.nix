@@ -9,6 +9,7 @@
   imports = [ inputs.home-manager.nixosModules.home-manager ];
   home-manager = {
     useUserPackages = true;
+    backupFileExtension = "bak";
     useGlobalPkgs = true;
     extraSpecialArgs = {
       inherit inputs;

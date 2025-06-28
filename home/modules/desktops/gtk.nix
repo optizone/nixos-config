@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, font, ... }:
 {
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
@@ -11,7 +11,7 @@
   gtk = {
     enable = true;
     font = {
-      name = "JetBrainsMono Nerd Font";
+      name = "${font}";
       size = 12;
     };
     theme = {

@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -8,6 +8,8 @@
     ./lualine.nix
     ./neo-tree.nix
   ];
+
+  home.packages = [ pkgs.nixd ];
 
   programs.nvf = {
     enable = true;
