@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 {
   imports = [
-    ../core
+    ../../core
   ];
 
   hardware.bluetooth.enable = true;

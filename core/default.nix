@@ -14,5 +14,6 @@
     ./system.nix
     ./hyprland.nix
     ./virtualization.nix
+    ./virt-scripts/default.nix
   ];
 }

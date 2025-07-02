@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -61,6 +63,7 @@
       nixpkgs,
       self,
       nix-index-database,
+      nixos-raspberrypi,
       ...
     }@inputs:
     let
@@ -101,10 +104,10 @@
           };
         };
 
-        protei-thinkpad = nixpkgs.lib.nixosSystem {
+        protei = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/protei-thinkpad
+            ./hosts/protei
             nix-index-database.nixosModules.nix-index
           ];
           specialArgs = {
@@ -120,6 +123,13 @@
               shell
               ;
           };
+        };
+
+        homelab = nixos-raspberrypi.lib.nixosSystem {
+          specialArgs = inputs;
+          modules = [
+            nixos-raspberrypi.nixosModules.raspberry-pi-4.base
+          ];
         };
 
         vm = nixpkgs.lib.nixosSystem {

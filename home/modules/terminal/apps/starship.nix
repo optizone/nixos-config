@@ -98,6 +98,7 @@
           Music = "󰝚 ";
           Pictures = " ";
           Developer = "󰲋 ";
+          vms = "󰋊 ";
         };
       };
 

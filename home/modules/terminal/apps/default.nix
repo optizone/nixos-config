@@ -1,5 +1,20 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    jq
+    ripgrep
+    killall
+    man-pages
+    nixfmt-rfc-style
+    pamixer
+    poweralertd
+    shfmt
+    unzip
+    wget
+    file
+    netcat
+  ];
+
   imports = [
     ./eza/default.nix
     ./fd.nix
