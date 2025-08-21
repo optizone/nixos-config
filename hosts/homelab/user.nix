@@ -6,7 +6,7 @@
   ...
 }:
 {
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
+  imports = [ inputs.home-manager-rpi.nixosModules.home-manager ];
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
@@ -15,10 +15,9 @@
     } // specialArgs;
     users.${username} = {
       imports = [
-        inputs.nvf.homeManagerModules.default
-        ../../home/modules/terminal/apps/default.nix
+        ../../home/modules/terminal/apps/yazi/default.nix
+        ../../home/modules/terminal/apps/fastfetch/default.nix
       ];
-      home.username = "${username}";
       home.homeDirectory = "/home/${username}";
       home.stateVersion = "24.05";
       programs.home-manager.enable = true;

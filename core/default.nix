@@ -1,5 +1,10 @@
 { ... }:
 {
+  programs.winbox = {
+    enable = true;
+    openFirewall = true;
+  };
+
   imports = [
     ./bootloader.nix
     ./hardware.nix

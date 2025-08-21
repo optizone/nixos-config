@@ -6,6 +6,11 @@
 
     nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
 
+    home-manager-rpi = {
+      url = "github:nix-community/home-manager?ref=release-25.05";
+      inputs.nixpkgs.follows = "nixos-raspberrypi";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,6 +37,13 @@
         nixpkgs.follows = "hyprland/nixpkgs";
         systems.follows = "hyprland/systems";
       };
+    };
+
+    disko = {
+      # the fork is needed for partition attributes support
+      url = "github:nvmd/disko/gpt-attrs";
+      # url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixos-raspberrypi/nixpkgs";
     };
 
     nur.url = "github:nix-community/NUR";
@@ -64,6 +76,7 @@
       self,
       nix-index-database,
       nixos-raspberrypi,
+      disko,
       ...
     }@inputs:
     let
@@ -126,9 +139,34 @@
         };
 
         homelab = nixos-raspberrypi.lib.nixosSystem {
-          specialArgs = inputs;
+          specialArgs = {
+            host = "homelab";
+            username = "nixos";
+            inherit inputs shell;
+          } // inputs;
           modules = [
-            nixos-raspberrypi.nixosModules.raspberry-pi-4.base
+            (
+              {
+                config,
+                pkgs,
+                lib,
+                nixos-raspberrypi,
+                disko,
+                ...
+              }:
+              {
+                imports = with nixos-raspberrypi.nixosModules; [
+                  # Hardware configuration
+                  raspberry-pi-4.base
+                  raspberry-pi-4.display-vc4
+                  raspberry-pi-4.bluetooth
+                ];
+              }
+            )
+
+            # nixos-raspberrypi.nixosModules.raspberry-pi-4.base
+            # disko.nixosModules.disko
+            ./hosts/homelab/default.nix
           ];
         };
 

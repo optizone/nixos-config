@@ -34,6 +34,7 @@ let
     c_battery = c_aqua;
     c_date = c_black;
     c_time = c_white;
+    c_homelab = c_blue;
   };
 in
 {
@@ -57,6 +58,8 @@ in
     ];
 
     modules-right = [
+      "custom/arrow11"
+      "custom/homelab"
       "custom/arrow9"
       "pulseaudio"
       "custom/arrow8"
@@ -101,6 +104,11 @@ in
       ];
       tooltip = true;
       tooltip-format = "{time}";
+    };
+
+    "custom/homelab" = {
+      format = "󰒋 down";
+      tooltip = false;
     };
 
     "custom/weather" = {
@@ -280,6 +288,11 @@ in
       format = "";
       tooltip = false;
     };
+
+    "custom/arrow11" = {
+      format = "";
+      tooltip = false;
+    };
   };
 
   # style.css
@@ -317,6 +330,7 @@ in
     #idle_inhibitor,
     #disk,
     #user,
+    #custom-homelab,
     #mpris {
       padding-left: 8pt;
       padding-right: 8pt;
@@ -350,6 +364,11 @@ in
     #mode {
       color: ${c_white};
       background: ${c_mode};
+    }
+
+    #custom-homelab {
+      color: ${c_white};
+      background: ${c_homelab};
     }
 
     /* Workspaces stuff */
@@ -494,12 +513,18 @@ in
     #custom-arrow9 {
       font-size: 11pt;
       color: ${c_sound};
-      background: transparent;
+      background: ${c_homelab};
     }
 
     #custom-arrow10 {
       font-size: 11pt;
       color: ${c_unfocused};
+      background: transparent;
+    }
+
+    #custom-arrow11 {
+      font-size: 11pt;
+      color: ${c_homelab};
       background: transparent;
     }
   '';

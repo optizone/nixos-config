@@ -49,6 +49,28 @@
         "type": "github"
       }
     },
+    "disko": {
+      "inputs": {
+        "nixpkgs": [
+          "nixos-raspberrypi",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1742690494,
+        "narHash": "sha256-SFacEbSRMoTyWG5VXh4ieofJGge+cLq9lH8ifB+zjBg=",
+        "owner": "nvmd",
+        "repo": "disko",
+        "rev": "9dc58d4d49c9f74623a06e2fc20cdfd8bb3cbe8b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvmd",
+        "ref": "gpt-attrs",
+        "repo": "disko",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -178,6 +200,27 @@
       },
       "original": {
         "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager-rpi": {
+      "inputs": {
+        "nixpkgs": [
+          "nixos-raspberrypi"
+        ]
+      },
+      "locked": {
+        "lastModified": 1751810233,
+        "narHash": "sha256-kllkNbIqQi3VplgTMeGzuh1t8Gk8TauvkTRt93Km+tQ=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "9b0873b46c9f9e4b7aa01eb634952c206af53068",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-25.05",
         "repo": "home-manager",
         "type": "github"
       }
@@ -922,7 +965,9 @@
     },
     "root": {
       "inputs": {
+        "disko": "disko",
         "home-manager": "home-manager",
+        "home-manager-rpi": "home-manager-rpi",
         "hypr-contrib": "hypr-contrib",
         "hyprland": "hyprland",
         "hyprlock": "hyprlock",

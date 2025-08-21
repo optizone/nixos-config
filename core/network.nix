@@ -4,14 +4,6 @@
     hostName = "${host}";
     networkmanager.enable = true;
 
-    nameservers = [
-      "83.243.64.1"
-      "83.243.65.2"
-      "8.8.8.8"
-      "8.8.4.4"
-      "1.1.1.1"
-    ];
-
     firewall = {
       enable = true;
 
