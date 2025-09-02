@@ -49,6 +49,21 @@
       "alt+9" = "goto_tab 9";
       "alt+0" = "goto_tab 10";
 
+      "alt+t" = "new_tab";
+      "alt+q" = "close_tab";
+
+      ## Windows
+      "alt+w" = "close_window";
+      "alt+enter" = "new_window";
+      "alt+]" = "next_window";
+      "alt+[" = "previous_window";
+
+      ## Scrolling
+      "alt+k" = "scroll_line_up";
+      "alt+j" = "scroll_line_down";
+      "alt+page_up" = "scroll_page_up";
+      "alt+page_down" = "scroll_page_down";
+
       ## Unbind
       # "ctrl+shift+left" = "no_op";
       # "ctrl+shift+right" = "no_op";
