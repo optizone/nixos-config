@@ -7,9 +7,12 @@
   imports = [
     ./lualine.nix
     ./neo-tree.nix
+    ./layout-mappers.nix
   ];
 
-  home.packages = [ pkgs.nixd ];
+  home.packages = [
+    pkgs.nixd
+  ];
 
   programs.nvf = {
     enable = true;
