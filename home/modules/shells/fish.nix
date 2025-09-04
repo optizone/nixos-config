@@ -35,7 +35,7 @@
       ",,,," = ",,,,";
       ",,,,," = ",,,,,";
 
-      "ns" = "nix-shell --run fish";
+      "nd" = "nix develop --command fish";
       "nv" = "nvim .";
     };
 
