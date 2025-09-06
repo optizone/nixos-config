@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-wallpapers_folder="$HOME/Pictures/wallpapers"
+wallpapers_folder="$HOME/pictures/wallpapers"
 
 current_wallpaper=$(readlink "$wallpapers_folder/.current_wallpaper" 2> /dev/null)
 current_wallpaper_name="$(basename "$current_wallpaper")"

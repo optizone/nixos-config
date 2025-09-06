@@ -94,10 +94,13 @@
         truncation_symbol = "…/";
         substitutions = {
           Documents = "󰈙 ";
+          documents = "󰈙 ";
           Downloads = " ";
+          downloads = " ";
           Music = "󰝚 ";
           Pictures = " ";
-          Developer = "󰲋 ";
+          pictures = " ";
+          code = "󰲋 ";
           vms = "󰋊 ";
         };
       };

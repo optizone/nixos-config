@@ -22,7 +22,7 @@
       background = [
         {
           monitor = "";
-          path = "~/Pictures/wallpapers/bush.jpg";
+          path = "~/pictures/wallpapers/bush.jpg";
           blur_passes = 2;
           contrast = 0.8916;
           brightness = 0.8172;
