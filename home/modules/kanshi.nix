@@ -10,6 +10,7 @@
           {
             criteria = "eDP-1";
             status = "enable";
+            scale = 1.25;
           }
         ];
       }
@@ -19,6 +20,7 @@
           {
             criteria = "eDP-1";
             status = "disable";
+            scale = 1.25;
           }
           {
             criteria = "DP-7";
