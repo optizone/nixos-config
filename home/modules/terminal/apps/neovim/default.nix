@@ -8,6 +8,7 @@
     ./lualine.nix
     ./neo-tree.nix
     ./layout-mappers.nix
+    ./obsidian.nix
   ];
 
   home.packages = [
@@ -21,7 +22,11 @@
       viAlias = true;
       vimAlias = true;
 
-      options.wrap = false;
+      options = {
+        wrap = false;
+        conceallevel = 2;
+        foldlevel = 99;
+      };
 
       lsp = {
         # This must be enabled for the language modules to hook into
@@ -62,7 +67,12 @@
           };
           treesitter.enable = true;
         };
-        markdown.enable = true;
+        markdown = {
+          enable = true;
+          format.enable = true;
+          lsp.enable = true;
+          treesitter.enable = true;
+        };
 
         bash.enable = true;
         clang.enable = true;
@@ -92,6 +102,7 @@
             },
           '';
         };
+        typst.enable = true;
 
         assembly.enable = false;
         astro.enable = false;
@@ -108,7 +119,6 @@
         ruby.enable = false;
         fsharp.enable = false;
         r.enable = false;
-        typst.enable = false;
         tailwind.enable = false;
         svelte.enable = false;
         nim.enable = false;
