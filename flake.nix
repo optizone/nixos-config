@@ -104,7 +104,7 @@
           ];
           specialArgs = {
             host = "thinkpad";
-            username = "optizone";
+            username = "thinkpad";
             inherit
               self
               inputs
@@ -125,7 +125,7 @@
           ];
           specialArgs = {
             host = "thinkpad";
-            username = "boicov";
+            username = "thinkpad";
             gitUsername = "boicov";
             gitEmail = "boicov@protei-lab.ru";
             inherit
@@ -138,38 +138,6 @@
           };
         };
 
-        homelab = nixos-raspberrypi.lib.nixosSystem {
-          specialArgs = {
-            host = "homelab";
-            username = "nixos";
-            inherit inputs shell;
-          } // inputs;
-          modules = [
-            (
-              {
-                config,
-                pkgs,
-                lib,
-                nixos-raspberrypi,
-                disko,
-                ...
-              }:
-              {
-                imports = with nixos-raspberrypi.nixosModules; [
-                  # Hardware configuration
-                  raspberry-pi-4.base
-                  raspberry-pi-4.display-vc4
-                  raspberry-pi-4.bluetooth
-                ];
-              }
-            )
-
-            # nixos-raspberrypi.nixosModules.raspberry-pi-4.base
-            # disko.nixosModules.disko
-            ./hosts/homelab/default.nix
-          ];
-        };
-
         vm = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
@@ -178,7 +146,7 @@
           ];
           specialArgs = {
             host = "vm";
-            username = "optizone";
+            username = "vm";
             inherit
               self
               inputs

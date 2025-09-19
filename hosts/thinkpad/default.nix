@@ -6,7 +6,11 @@ in
   imports = [
     ../laptop-common/default.nix
     ./hardware-configuration.nix
+
     ./user.nix
+
+    ./services/lubelogger.nix
+    ./services/nfs.nix
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];

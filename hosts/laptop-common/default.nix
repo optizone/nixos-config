@@ -20,7 +20,8 @@
   services = {
     tlp.enable = true;
     tlp.settings = {
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      # CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "powersave";
       CPU_ENERGY_PERF_POLICY_ON_BAT = "powersave";
 
       CPU_BOOST_ON_AC = 1;
@@ -29,7 +30,8 @@
       CPU_HWP_DYN_BOOST_ON_AC = 1;
       CPU_HWP_DYN_BOOST_ON_BAT = 1;
 
-      PLATFORM_PROFILE_ON_AC = "performance";
+      # PLATFORM_PROFILE_ON_AC = "performance";
+      PLATFORM_PROFILE_ON_AC = "low-power";
       PLATFORM_PROFILE_ON_BAT = "low-power";
 
       INTEL_GPU_MIN_FREQ_ON_AC = 500;
@@ -57,6 +59,9 @@
       "acpi_call"
       "thinkpad_acpi"
     ];
+    kernel.sysctl = {
+      "vm.swappiness" = 10;
+    };
     extraModulePackages =
       with config.boot.kernelPackages;
       [
