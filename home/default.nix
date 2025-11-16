@@ -5,6 +5,7 @@
     ./browsers/librewolf.nix
     ./browsers/zen-browser.nix
     ./browsers/google-chrome.nix
+    ./browsers/qutebroser.nix
 
     ./desktops/default.nix
 
