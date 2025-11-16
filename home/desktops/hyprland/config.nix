@@ -162,10 +162,10 @@
         "$mainMod, X, exec, power-menu"
         "$mainMod, P, pseudo,"
         "$mainMod, S, togglesplit,"
-        "$mainMod, V, exec, hyprctl dispatch exec '[float; size 925 615] pavucontrol'"
+        "$mainMod, V, exec, hyprctl dispatch exec '[centerwindow; size 925 615] pavucontrol'"
         "$mainMod SHIFT, B, exec, toggle-waybar"
         "$mainMod, C ,exec, hyprpicker -a"
-        "$mainMod SHIFT, W,exec, hyprctl dispatch exec '[float; size 925 615] waypaper'"
+        "$mainMod SHIFT, W,exec, hyprctl dispatch exec '[centerwindow; size 925 615] waypaper'"
         "$mainMod, N, exec, swaync-client -t -sw"
 
         # screenshot
