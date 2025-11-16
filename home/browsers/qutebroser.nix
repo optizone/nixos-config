@@ -3,6 +3,15 @@
   programs.qutebrowser = {
     enable = true;
 
+    settings = {
+      auto_save.session = true;
+      colors.webpage.darkmode = {
+        enabled = true;
+      };
+
+      colors.webpage.preferred_color_scheme = "dark";
+    };
+
     extraConfig = ''
       # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
       # Scheme name: Gruvbox dark, medium
@@ -265,28 +274,28 @@
       c.colors.tabs.even.fg = base05
 
       # Background color of unselected even tabs.
-      c.colors.tabs.even.bg = base00
+      c.colors.tabs.even.bg = base01
 
       # Background color of pinned unselected even tabs.
-      c.colors.tabs.pinned.even.bg = base0C
+      c.colors.tabs.pinned.even.bg = base01
 
       # Foreground color of pinned unselected even tabs.
       c.colors.tabs.pinned.even.fg = base07
 
       # Background color of pinned unselected odd tabs.
-      c.colors.tabs.pinned.odd.bg = base0B
+      c.colors.tabs.pinned.odd.bg = base01
 
       # Foreground color of pinned unselected odd tabs.
       c.colors.tabs.pinned.odd.fg = base07
 
       # Background color of pinned selected even tabs.
-      c.colors.tabs.pinned.selected.even.bg = base02
+      c.colors.tabs.pinned.selected.even.bg = "#B16286"
 
       # Foreground color of pinned selected even tabs.
       c.colors.tabs.pinned.selected.even.fg = base05
 
       # Background color of pinned selected odd tabs.
-      c.colors.tabs.pinned.selected.odd.bg = base02
+      c.colors.tabs.pinned.selected.odd.bg = "#B16286"
 
       # Foreground color of pinned selected odd tabs.
       c.colors.tabs.pinned.selected.odd.fg = base05
@@ -295,13 +304,13 @@
       c.colors.tabs.selected.odd.fg = base05
 
       # Background color of selected odd tabs.
-      c.colors.tabs.selected.odd.bg = base02
+      c.colors.tabs.selected.odd.bg = "#B16286"
 
       # Foreground color of selected even tabs.
       c.colors.tabs.selected.even.fg = base05
 
       # Background color of selected even tabs.
-      c.colors.tabs.selected.even.bg = base02
+      c.colors.tabs.selected.even.bg = "#B16286"
 
       # Background color for webpages if unset (or empty to use the theme's
       # color).

@@ -52,6 +52,10 @@
         no_border_on_floating = false;
       };
 
+      cursor = {
+        inactive_timeout = 0.100;
+      };
+
       misc = {
         disable_autoreload = true;
         disable_hyprland_logo = true;
@@ -152,6 +156,7 @@
         "$mainMod, F, exec, toggle-float"
         "$mainMod SHIFT, D, exec, rofi -show drun || pkill rofi"
         "$mainMod SHIFT, Return, exec, $term fish -c y"
+        "$mainMod SHIFT, O, exec, qutebrowser"
         "$mainMod, Escape, exec, swaylock"
         "ALT, Escape, exec, hyprlock"
         "$mainMod, X, exec, power-menu"
