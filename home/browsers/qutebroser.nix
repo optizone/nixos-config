@@ -1,4 +1,4 @@
-{ ... }:
+{ fontMono, ... }:
 {
   programs.qutebrowser = {
     enable = true;
@@ -8,6 +8,30 @@
       colors.webpage.darkmode = {
         enabled = true;
       };
+
+      # TODO: hyprctl dispatch exec does not wait for return. find how to center float window
+      fileselect.single_file.command = [
+        "kitty"
+        "-e"
+        "yazi"
+      ];
+
+      fileselect.multiple_files.command = [
+        "kitty"
+        "-e"
+        "yazi"
+      ];
+
+      fileselect.folder.command = [
+        "kitty"
+        "-e"
+        "yazi"
+      ];
+
+      # TODO
+      # editor.command
+
+      fonts.default_family = "${fontMono}";
 
       colors.webpage.preferred_color_scheme = "dark";
     };
