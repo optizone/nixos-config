@@ -9,8 +9,8 @@ in
 
     ./user.nix
 
-    ./services/lubelogger.nix
-    ./services/nfs.nix
+    ../../core/services/lubelogger.nix
+    ../../core/services/smb.nix
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];

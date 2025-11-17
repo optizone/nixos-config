@@ -1,5 +1,14 @@
 { pkgs, inputs, ... }:
 {
+  imports = [
+    ./bootloader.nix
+    ./nh.nix
+    ./network.nix
+    ./pipewire.nix
+    ./security.nix
+    ./virtualization.nix
+  ];
+
   nix = {
     settings = {
       auto-optimise-store = true;
