@@ -28,6 +28,8 @@
 
       # TODO: greasemonkey; editor.command
 
+      tabs.max_width = 255;
+
       fonts.default_family = "${fontMono}";
 
       colors.webpage.preferred_color_scheme = "dark";
@@ -40,6 +42,7 @@
       };
     };
 
+    # TODO:
     extraConfig = ''
       # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
       # Scheme name: Gruvbox dark, medium
