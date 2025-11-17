@@ -9,8 +9,6 @@
         enabled = true;
       };
 
-      # TODO: J K swap; greasemonkey
-
       fileselect = {
         single_file.command = [
           "term-filepicker-hyper"
@@ -28,12 +26,18 @@
         ];
       };
 
-      # TODO
-      # editor.command
+      # TODO: greasemonkey; editor.command
 
       fonts.default_family = "${fontMono}";
 
       colors.webpage.preferred_color_scheme = "dark";
+    };
+
+    keyBindings = {
+      "normal" = {
+        "J" = "tab-prev";
+        "K" = "tab-next";
+      };
     };
 
     extraConfig = ''
