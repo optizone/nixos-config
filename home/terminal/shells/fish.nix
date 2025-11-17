@@ -35,6 +35,7 @@
       ",,,," = ",,,,";
       ",,,,," = ",,,,,";
 
+      "ct" = "clean-trash-bin";
       "ns" = "nix-shell --command fish -p";
       "nd" = "nix develop --command fish";
       "ndl" =
