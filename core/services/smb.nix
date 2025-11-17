@@ -21,25 +21,27 @@
       };
 
       "backups" = {
-        "path" = "/home/thinkpad/zroot/";
+        "path" = "/export/backups/";
         "browseable" = "yes";
+        "public" = "no";
         "read only" = "no";
         "guest ok" = "yes";
         "create mask" = "0644";
         "directory mask" = "0755";
+        "valid users" = "thinkpad";
         "force user" = "thinkpad";
-        "force group" = "groupname";
       };
 
       "disk-images" = {
         "path" = "/export/disk-images/";
         "browseable" = "yes";
+        "public" = "no";
         "read only" = "no";
-        "guest ok" = "no";
+        "guest ok" = "yes";
         "create mask" = "0644";
         "directory mask" = "0755";
+        "valid users" = "thinkpad";
         "force user" = "thinkpad";
-        "force group" = "thinkpad";
       };
     };
   };
@@ -50,4 +52,9 @@
   };
 
   networking.firewall.allowPing = true;
+
+  systemd.tmpfiles.rules = [
+    "d /export/backups 0770 thinkpad thinkpad - -"
+    "d /export/disk-images 0770 thinkpad thinkpad - -"
+  ];
 }
