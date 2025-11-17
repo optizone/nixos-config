@@ -9,24 +9,24 @@
         enabled = true;
       };
 
-      # TODO: hyprctl dispatch exec does not wait for return. find how to center float window
-      fileselect.single_file.command = [
-        "kitty"
-        "-e"
-        "yazi"
-      ];
+      # TODO: J K swap; greasemonkey
 
-      fileselect.multiple_files.command = [
-        "kitty"
-        "-e"
-        "yazi"
-      ];
+      fileselect = {
+        single_file.command = [
+          "term-filepicker-hyper"
+          "{}"
+        ];
 
-      fileselect.folder.command = [
-        "kitty"
-        "-e"
-        "yazi"
-      ];
+        multiple_files.command = [
+          "term-filepicker-hyper"
+          "{}"
+        ];
+
+        folder.command = [
+          "term-filepicker-hyper"
+          "{}"
+        ];
+      };
 
       # TODO
       # editor.command
