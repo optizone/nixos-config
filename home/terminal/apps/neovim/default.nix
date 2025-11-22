@@ -213,7 +213,7 @@
         };
         smartcolumn = {
           enable = true;
-          setupOpts.custom_colorcolumn = {
+          setupOpts.custom_column = {
             nix = "110";
             ruby = "120";
             java = "130";
